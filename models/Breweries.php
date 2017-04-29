@@ -4,17 +4,9 @@
     function getAll($mysqli){
 
       $query = "SELECT
-          B.*,
-          COALESCE(AVG(BR.rating), 0) as rating,
-          COALESCE(COUNT(BR.id), 0) as total_reviews
+          B.*
         FROM
-          brewery B
-        LEFT JOIN
-          brewery_reviews BR
-        ON
-          BR.brewery = B.id
-        GROUP BY
-          B.id";
+          brewery B";
 
       $result = $mysqli->query($query) or die(mysqli_error($mysqli));
 

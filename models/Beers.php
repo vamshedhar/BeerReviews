@@ -9,18 +9,10 @@
       }
 
       $query = "SELECT
-        B.*,
-        COALESCE(AVG(BR.rating), 0) as rating,
-        COALESCE(COUNT(BR.id), 0) as total_reviews
+        B.*
       FROM
         beers B
-      LEFT JOIN
-        beer_reviews BR
-      ON
-        BR.beer = B.id
-      ".$filterString."
-      GROUP BY
-        B.id";
+      ".$filterString;
 
       $result = $mysqli->query($query) or die(mysqli_error($mysqli));
 
